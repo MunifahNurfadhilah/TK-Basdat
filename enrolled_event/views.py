@@ -7,6 +7,11 @@ import random
 from django.shortcuts import render, redirect
 
 
+def fetch(cursor):
+    columns = [col[0] for col in cursor.description]
+    return [dict(zip(columns, row)) for row in cursor.fetchall()]
+
+
 # Create your views here.
 
 def indexEnrolledPartaiKompetisi(request):
@@ -56,7 +61,29 @@ def indexEnrolledPartaiKompetisi(request):
 def indexEnrolledEventAtlet(request):
     cursor.execute('set search_path to babadu')
 
-    return render(request, 'enrolled_partai_kompetisi.html')
+    email = request.COOKIES.get('email')
+    nama = request.COOKIES.get('nama')
+
+    id = 1
+
+    query = """
+        SELECT e.nama_event, e.tahun, e.nama_stadium, e.kategori_superseries, e.tgl_mulai, e.tgl_selesai
+            FROM babadu.event AS e, babadu.peserta_mendaftar_event AS pme, babadu.peserta_kompetisi AS pk
+            WHERE pk.nomor_peserta = '{id}' 
+            AND pme.nomor_peserta = pk.nomor_peserta
+            AND pme.nama_event = e.nama_event
+            AND pme.tahun = e.tahun
+    """
+
+    cursor.execute()
+    cursor.execute('SET search_path TO babadu')
+    cursor.execute(query)
+
+    data = fetch(cursor)
+
+    context = {'data': data}
+    print(context)
+    return render(request, 'enrolled_partai_kompetisi.html', context)
 
 
 

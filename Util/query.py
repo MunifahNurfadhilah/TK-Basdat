@@ -6,7 +6,7 @@ try:
     connection = psycopg2.connect(user="postgres",
                                   password="a9nhUoVy1jPgQRnQs8qC",
                                   host="tk-basdat-production.up.railway.app",
-                                  port="7959",
+                                  port="7337",
                                   database="railway")
 
     # Create a cursor to perform database operations
