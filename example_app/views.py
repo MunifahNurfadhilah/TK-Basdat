@@ -16,7 +16,6 @@ def indexWelcome(request):
     request.session['nonauth'] = True
     return render(request, 'welcome.html')
 
-
 def parse(cursor):
     columns = [col[0] for col in cursor.description]
     return [dict(zip(columns, row)) for row in cursor.fetchall()]
@@ -62,14 +61,14 @@ def register_atlet(nama, email, negara_asal, tgl_lahir, play_right, height, jeni
     try:
         id = uuid.uuid4()
         db_connection = psycopg2.connect(
-        host="localhost",
-        database="munifah.nurfadhilah",
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
         cursor = db_connection.cursor()
-        #cursor.execute("SET SEARCH_PATH TO BABADU;")
+        cursor.execute("SET SEARCH_PATH TO BABADU;")
         query_member = sql_insert_member(id, nama, email)
         cursor.execute(query_member)
         query_atlet = sql_insert_atlet(id, tgl_lahir, negara_asal, play_right, height, jenis_kelamin)
@@ -88,11 +87,11 @@ def register_pelatih(nama, email, spesialisasi, tanggal_mulai):
     try:
         id = uuid.uuid4()
         db_connection = psycopg2.connect(
-        host="localhost",
-        database="munifah.nurfadhilah",
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
         cursor = db_connection.cursor()
         cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -117,11 +116,11 @@ def register_umpire(nama, email, negara):
     try:
         id = uuid.uuid4()
         db_connection = psycopg2.connect(
-        host="localhost",
-        database="munifah.nurfadhilah",
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
         cursor = db_connection.cursor()
         cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -146,11 +145,11 @@ def show_login(request):
         email = request.POST.get('email')
         query_user = sql_get_user(nama, email)
         db_connection = psycopg2.connect(
-        host="localhost",
-        database="munifah.nurfadhilah",
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
         cursor = db_connection.cursor()
         cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -197,3 +196,5 @@ def logout(request):
     request.session['is_umpire'] = False
     request.session['nonauth'] = True
     return redirect('example_app:welcome')
+
+

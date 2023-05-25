@@ -163,14 +163,14 @@ from django.shortcuts import render
 def data_kualifikasi(request):
     context = {}
     db_connection = psycopg2.connect(
-        host="localhost",
-        database="munifah.nurfadhilah",
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
     cursor = db_connection.cursor()
     
-    cursor.execute("set search_path to babadu")
+    cursor.execute("set search_path to babadu;")
     db_connection.close()
     return render(request, 'data_kualifikasi.html', context=context)
