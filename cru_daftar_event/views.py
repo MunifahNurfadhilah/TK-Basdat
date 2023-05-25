@@ -6,10 +6,10 @@ def list_all_events(request):
     context = {}
     db_connection = psycopg2.connect(
         host="localhost",
-        database="munifah.nurfadhilah",
+        database="",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="",
+        password=""
     )
     cursor = db_connection.cursor()
     cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -26,10 +26,10 @@ def list_all_event_stadiums(request):
     context = {}
     db_connection = psycopg2.connect(
         host="localhost",
-        database="munifah.nurfadhilah",
+        database="",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="",
+        password=""
     )
     cursor = db_connection.cursor()
     cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -47,10 +47,10 @@ def list_all_event_categories(request):
     context = {}
     db_connection = psycopg2.connect(
         host="localhost",
-        database="munifah.nurfadhilah",
+        database="",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="",
+        password=""
     )
     cursor = db_connection.cursor()
     cursor.execute("SET SEARCH_PATH TO BABADU;")
