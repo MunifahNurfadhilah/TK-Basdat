@@ -29,4 +29,6 @@ urlpatterns = [
     path('event_umpire/', include('event_umpire.urls')),    
     path('pertandingan/', include('pertandingan.urls')),    
     path('hasil_pertandingan/', include('hasil_pertandingan.urls')),
+    path('example_app/', include('example_app.urls')),
+
 ]

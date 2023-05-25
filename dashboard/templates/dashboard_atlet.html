@@ -55,77 +55,75 @@
 <body>
     <div class="container">
     {% include 'navbarAtlet.html' %}
-        <h1 class="text-center my-5">Welcome Atlet</h1>
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputName">Name :</label>
-                   <!-- <input type="text" class="form-control" id="inputName" placeholder="Enter your name"> -->
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputCountry">Country :</label>
-                    <!-- <input type="text" class="form-control" id="inputCountry" placeholder="Enter your country"> -->
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail">Email :</label>
-                    <!-- <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email"> -->
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputDOB">Date of Birth :</label>
-                    <!-- <input type="date" class="form-control" id="inputDOB"> -->
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputPlay">Play :</label>
-                    <!-- <input type="text" class="form-control" id="inputPlay" placeholder="Enter your play"> -->
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputHeight">Height :</label>
-                    <!-- <input type="text" class="form-control" id="inputHeight" placeholder="Enter your height"> -->
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputGender">Gender :</label>
-                    <select id="inputGender" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputCoach">Coach :</label>
-                    <select id="inputCoach" class="form-control">
-                        <option selected>-</option>
-                        <option>Coach A</option>
-                        <option>Coach B</option>
-                        <option>Coach C</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="status">Status :</label>
-                  <select class="form-control" id="status">
-                    <option>Not Qualified</option>
-                    <option>Qualified</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="world-rank">World Rank :</label>
-                  <!-- <input type="text" class="form-control" id="world-rank"> -->
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="total-points">Total Points :</label>
-                  <!-- <input type="text" class="form-control" id="total-points"> -->
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="d-flex my-5 justify-content-center align-items-center">
+        <div class="container-sm mx-5 p-5 shadow-sm border rounded-5 border-primary">
+        <h1 class="text-center mb-5 text-primary">Dashboard</h1>
+        <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th scope="col">Nama Lengkap</th>
+                <td>{{ request.session.nama }}</td>
+                <th scope="col">Tinggi Badan</th>
+                <td>{{ request.session.height }} cm</td>
+              </tr>
+              <tr>
+                <th scope="col">Negara</th>
+                <td>{{ request.session.negara_asal }}</td>
+                <th scope="col">Jenis Kelamin</th>
+                <td> 
+                  {% if request.session.jenis_kelamin %}
+                  Putra
+                  {% else %}
+                  Putri
+                  {% endif %} 
+                </td>
+              </tr>
+              <tr>
+                <th scope="col">Email</th>
+                <td>{{ request.session.email }}</td>
+                <th scope="col">Pelatih</th>
+                <td>{{ pelatih }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Tanggal Lahir</th>
+                <td>{{ request.session.tgl_lahir }}</td>
+                <th scope="col">Status</th>
+                <td>{{ status_kualifikasi }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Play</th>
+                <td>
+                  {% if request.session.play_right %}
+                  Right Hand
+                  {% else %}
+                  Left Hand
+                  {% endif %}  
+                </td>
+                <th scope="col">World Rank</th>
+                <td>
+                  {% if status_kualifikasi == 'Qualified' %}
+                  {{ request.session.world_rank }}
+                  {% else %}
+                  -
+                  {% endif %}
+                </td>
+              </tr>
+              <tr>
+                <th scope="col">Total Poin</th>
+                <td>
+                  {% if status_kualifikasi == 'Qualified' %}
+                  {{  total_point }}
+                  {% else %}
+                  0
+                  {% endif %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
+        <div style="margin-top:50px"></div>          
+    </div>
+    </div>
            <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <!-- Bootstrap JS -->

@@ -4,7 +4,7 @@ from dashboard.views import indexDashboardAtlet, indexDashboardPelatih, indexDas
 app_name = 'dashboard'
 
 urlpatterns = [
-    path('dashboard_atlet/', indexDashboardAtlet, name='index'),
-    path('dashboard_pelatih/', indexDashboardPelatih, name='index'),
-    path('dashboard_umpire/', indexDashboardUmpire, name='index'),    
+    path('dashboard_atlet/', indexDashboardAtlet, name='dashboard_atlet'),
+    path('dashboard_pelatih/', indexDashboardPelatih, name='dashboard_pelatih'),
+    path('dashboard_umpire/', indexDashboardUmpire, name='dashboard_umpire'),    
 ]

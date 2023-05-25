@@ -7,19 +7,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="container my-5">
-    <h1 class="text-center">WELCOME</h1>
-    <div class="text-center my-5">
-        <h2>BABADU - C9</h2>
-      </div>
-    <form class="w-100">
-        <div class="d-flex justify-content-center gap-4">
-      <button type="submit" class="btn btn-primary">Login</button>
-      <button type="submit" class="btn btn-primary">Register</button>
+  
+  <section class="container-fluid p-2 text-center ">
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <div class="col-md-4 p-5 shadow-sm border rounded-5 border-primary">
+            <h1 class="text-center mb-4 text-primary">BABADU - C9</h1>
+            <div class="container-fluid">
+                <div class="row my-3">
+                    <a type="button" class="btn btn-outline-primary" href="{% url 'example_app:loginForm' %}">Login</a>
+                </div>
+                <div class="row my-3">
+                    <a type="button" class="btn btn-outline-primary"  href="{% url 'example_app:register' %}">Register</a>
+                </div>
+            </div>
+            
+        </div>
     </div>
-    </form>
-   
-  </div>
+</section>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"></script>
 </body>
 </html>

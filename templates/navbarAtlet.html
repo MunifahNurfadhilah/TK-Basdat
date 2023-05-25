@@ -1,31 +1,51 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand" href="#">Atlet</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg  navbar-light">
+  <div class="container px-3">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
+          aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Tes Kualifikasi</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Daftar Event</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Enrolled Event</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Daftar Sponsor</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Logout</a>
-          </li>
-        </ul>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarsExample07">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'dashboard:dashboard_atlet' %}">Dashboard <span
+                          class="sr-only"></span></a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Ujian Kualifikasi
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'cru_tes_kualifikasi:list_ujian_kualifikasi' %}">List Ujian
+                              Kualifikasi</a></li>
+                      <li><a class="dropdown-item" href="{% url 'cru_tes_kualifikasi:riwayat_ujian_kualifikasi' %}">Riwayat Ujian Kualifikasi</a></li>
+                  </ul>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Event
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Daftar Event</a></li>
+                      <li><a class="dropdown-item" href="#">Enrolled Event</a></li>
+                  </ul>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Sponsor
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Daftar Sponsor</a></li>
+                      <li><a class="dropdown-item" href="#">List Sponsor</a></li>
+                  </ul>
+              </li>
+          </ul>
       </div>
-    </div>
-  </nav>
-  
+      <span class="navbar-text">
+          <a class="btn btn-danger btn-logout" href="{% url 'example_app:logout' %}">Logout</a>
+      </span>
+  </div>
+</nav>
