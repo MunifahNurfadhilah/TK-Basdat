@@ -10,23 +10,32 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container mt-5">
-		<div class="row justify-content-center">
-			<div class="col-md-6">
-				<form>
-					<h2 class="text-center mb-4">FORM LOGIN</h2>
-					<div class="form-group">
-						<label for="name">Name:</label>
-						<input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-					</div>
-					<div class="form-group">
-						<label for="email">Email:</label>
-						<input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-					</div>
-					<button type="submit" class="btn btn-primary btn-block">Login</button>
-				</form>
-			</div>
-		</div>
-	</div>
+
+	<div class="vh-100 d-flex justify-content-center align-items-center">
+        <div class="col-md-4 p-5 shadow-sm border rounded-5 border-primary grad">
+            <h1 class="text-center mb-4 text-primary">Form Login</h1>
+            <form class="needs-validation" method="POST" action="{% url 'example_app:loginForm' %}">
+                {%csrf_token%}
+                <div class="mb-3">
+                    <label for="inputNama" class="form-label">Nama</label>
+                    <input type="name" class="form-control border border-primary" id="nama" name="nama" aria-describedby="emailHelp" required>
+                    <div class="valid-feedback">
+                        Please provide valid username
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control border border-primary" id="email" name="email" required>
+                    <div class="valid-feedback">
+                        Please provide valid password
+                      </div>
+                </div>
+                <div class="d-grid">
+                    <button class="btn btn-primary" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
