@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import render
 from Util.query import *
 from django.urls import reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect, render
+from django.db import connection
 import random
 from django.shortcuts import render, redirect
 
@@ -15,6 +16,7 @@ def fetch(cursor):
 # Create your views here.
 
 def indexEnrolledPartaiKompetisi(request):
+    cursor = connection.cursor()
     cursor.execute('set search_path to babadu')
     email = request.COOKIES.get('email')
     nama = request.COOKIES.get('nama')
@@ -59,31 +61,35 @@ def indexEnrolledPartaiKompetisi(request):
 
 
 def indexEnrolledEventAtlet(request):
+    cursor = connection.cursor()
     cursor.execute('set search_path to babadu')
 
     email = request.COOKIES.get('email')
     nama = request.COOKIES.get('nama')
 
-    id = 1
+    cursor.execute(f"""
+        SELECT id from MEMBER WHERE nama = {nama} and email = {email}; 
+        """)
 
-    query = """
+    
+    record = cursor.fetchall()[0]
+    id = record[0]
+
+    cursor.execute('SET search_path TO babadu')
+    cursor.execute(f"""
         SELECT e.nama_event, e.tahun, e.nama_stadium, e.kategori_superseries, e.tgl_mulai, e.tgl_selesai
             FROM babadu.event AS e, babadu.peserta_mendaftar_event AS pme, babadu.peserta_kompetisi AS pk
-            WHERE pk.nomor_peserta = '{id}' 
+            WHERE pk.nomor_peserta = {id}
             AND pme.nomor_peserta = pk.nomor_peserta
             AND pme.nama_event = e.nama_event
             AND pme.tahun = e.tahun
-    """
-
-    cursor.execute()
-    cursor.execute('SET search_path TO babadu')
-    cursor.execute(query)
+    """)
 
     data = fetch(cursor)
 
-    context = {'data': data}
-    print(context)
-    return render(request, 'enrolled_partai_kompetisi.html', context)
+    response = {'data': data}
+    print(response)
+    return render(request, 'event_cards_partai.html', response)
 
 
 

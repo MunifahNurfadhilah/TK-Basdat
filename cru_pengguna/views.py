@@ -8,6 +8,7 @@ def indexEarly(request):
     return render(request, 'early_register.html')
 
 def indexRegistAtlet(request):
+    cursor = connection.cursor()
     cursor.execute('set search_path to babadu')
     if request.method == 'POST' or 'post' and not request.method == 'GET':
 
@@ -40,6 +41,7 @@ def indexRegistAtlet(request):
     return render(request, 'regist_atlet.html')
 
 def indexRegistPelatih(request):
+    cursor = connection.cursor()
     cursor.execute('set search_path to babadu')
 
     if request.method == 'POST' or 'post' and not request.method == 'GET':
@@ -78,6 +80,7 @@ def indexRegistPelatih(request):
     return render(request, 'regist_pelatih.html')
 
 def indexRegistUmpire(request): 
+    cursor = connection.cursor()
     cursor.execute('set search_path to babadu')
     if request.method == 'POST' or 'post' and not request.method == 'GET':
         name = request.POST.get('name')

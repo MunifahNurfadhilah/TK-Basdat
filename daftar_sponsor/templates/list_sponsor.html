@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Link to Bootstrap CSS file -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- Link to Bootstrap JS file -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>List of Sponsors</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+    {% include 'navbarAtlet.html' %}
+  <h1>List of Sponsors</h1>
+  <table>
+    <thead>
+        <tbody>
+            {% for sp in context %}
+            <tr>
+              <td>{{ sp.nama_event }}</td>
+              <td>{{ sp.nama_stadium }}</td>
+              <td>{{ sp.prize }}</td>
+              <td>{{ sp.kategori_superseries }}</td>
+              <td>{{ sp.tgl_mulai }}</td>
+              <td>{{ sp.tgl_selesai }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </thead>
+  </table>
+</body>
+</html>
