@@ -38,8 +38,9 @@ def query(query_str: str):
 
 # Create your views here.
 db_connection = psycopg2.connect(
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        password='99tugas',
-        host="localhost",
-        database="munifah.nurfadhilah",
-        port="5433")
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
+    )

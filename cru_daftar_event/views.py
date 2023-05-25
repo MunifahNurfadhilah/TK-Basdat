@@ -1,15 +1,18 @@
 from django.shortcuts import render
+import psycopg2
+from cru_daftar_event.query import *
+from utils.query import *
 
 # Create your views here.
 
 def list_all_events(request):
     context = {}
     db_connection = psycopg2.connect(
-        host="localhost",
-        database="",
+    host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="",
-        password=""
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
     cursor = db_connection.cursor()
     cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -25,11 +28,11 @@ def list_all_events(request):
 def list_all_event_stadiums(request):
     context = {}
     db_connection = psycopg2.connect(
-        host="localhost",
-        database="",
+    host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="",
-        password=""
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
     cursor = db_connection.cursor()
     cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -46,11 +49,11 @@ def list_all_event_stadiums(request):
 def list_all_event_categories(request):
     context = {}
     db_connection = psycopg2.connect(
-        host="localhost",
-        database="",
+    host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="",
-        password=""
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
     cursor = db_connection.cursor()
     cursor.execute("SET SEARCH_PATH TO BABADU;")
