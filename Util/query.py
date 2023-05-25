@@ -5,7 +5,7 @@ try:
     # Connect to an existing database
     connection = psycopg2.connect(user="postgres",
                                   password="a9nhUoVy1jPgQRnQs8qC",
-                                  host="tk-basdat-production.up.railway.app",
+                                  host="containers-us-west-13.railway.app",
                                   port="7337",
                                   database="railway")
 

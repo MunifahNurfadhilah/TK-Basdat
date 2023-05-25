@@ -79,7 +79,7 @@ def riwayat_ujian_kualifikasi(request):
 
     context['data_riwayat_ujian_kualifikasi'] = riwayat_ujian_kualifikasi
 
-    return render(request, "riwayat_ujian_kualifikasi.html", context)
+    return render(request, "riwayat-ujian-kualifikasi.html", context)
 
 # umpire
 def buat_tes_kualifikasi(tahun, batch, tempat, tanggal):
@@ -115,7 +115,7 @@ def form_buat_ujian_kualifikasi(request):
             tanggal = request.POST.get('tanggal')
             data = buat_tes_kualifikasi(tahun, batch, tempat, tanggal)
             if data['success']:
-                return redirect('umpire:list_ujian_kualifikasi_umpire')
+                return redirect('cru_tes_kualifikasi:list_ujian_kualifikasi_umpire')
             else:
                 messages.info(request,data['msg'])
     return render(request, "form_buat_ujian_kualifikasi.html")
