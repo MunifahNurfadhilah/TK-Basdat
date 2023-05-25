@@ -17,6 +17,21 @@ def sql_get_riwayat_ujian_kualifikasi(id):
     WHERE id_atlet = '{id}';
     """
 
+def sql_insert_riwayat_ujian_kualifikasi(id, tahun, batch, tempat, tanggal, hasil_lulus):
+    return f"""
+    INSERT INTO 
+        ATLET_NONKUALIFIKASI_UJIAN_KUALIFIKASI(ID_Atlet, tahun, batch, tempat, tanggal, hasil_lulus)
+    VALUES
+        (
+            '{id}',
+            '{tahun}',
+            '{batch}',
+            '{tempat}',
+            '{tanggal}',
+            '{hasil_lulus}'
+        )
+    """
+
 # umpire
 def sql_insert_ujian_kualifikasi(tahun, batch, tempat, tanggal):
     return f"""

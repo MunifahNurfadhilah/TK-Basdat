@@ -30,7 +30,7 @@
                   <td>{{ ujian_kualifikasi.batch }}</td>
                   <td>{{ ujian_kualifikasi.tempat }}</td>
                   <td>{{ ujian_kualifikasi.tanggal }}</td>
-                  <td><a href="{% url 'cru_tes_kualifikasi:tes_kualifikasi' %}">Ikuti</a></td>
+                  <td><button class="btn btn-primary" type="submit" name="submitIkutiUjian"><a href="{{ ujian_kualifikasi.tahun }}/{{ ujian_kualifikasi.batch }}/{{ ujian_kualifikasi.tempat }}/{{ ujian_kualifikasi.tanggal_url }}">Ikuti</a></button></td>
                 </tr>
                {% endfor %}
             </tbody>
