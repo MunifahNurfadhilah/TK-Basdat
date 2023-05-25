@@ -14,8 +14,8 @@
       <thead class="bg-primary text-white">
         <tr>
           <th>Nama Event</th>
-          <th>tahun</th>
-          <ths>stadium</th>
+          <th>Tahun</th>
+          <th>Stadium</th>
           <th>Category Superseries</th>
           <th>Start Date</th>
           <th>Finish Date</th>
@@ -29,11 +29,11 @@
           <td>{{ event.nama_stadium }}</td>
           <td>{{ event.prize }}</td>
           <td>{{ event.category_superseries }}</td>
-          <td>{{ event.category_spesialisasi }}</td>
           <td>{{ event.start_date }}</td>
           <td>{{ event.finish_date }}</td>
-          <td>{{ event.capacity }}</td>
-          <td><button class="btn btn-danger">Unenrolled</button></td>
+          <td>
+            <button class="btn btn-danger" onclick="unenrollEvent('{{ event.id }}')">Unenrolled</button>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
@@ -44,5 +44,11 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script>
+    function unenrollEvent(eventId) {
+      window.location.href = "/delete_peserta/" + eventId;
+    }
+  </script>
 </body>
 </html>
