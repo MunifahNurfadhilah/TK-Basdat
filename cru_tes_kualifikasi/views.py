@@ -34,11 +34,11 @@ def tes_kualifikasi(request):
 def list_ujian_kualifikasi(request):
     context = {}
     db_connection = psycopg2.connect(
-        host="localhost",
-        database="munifah.nurfadhilah",
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
     cursor = db_connection.cursor()
     cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -59,11 +59,11 @@ def list_ujian_kualifikasi(request):
 def riwayat_ujian_kualifikasi(request):
     context = {}
     db_connection = psycopg2.connect(
-        host="localhost",
-        database="munifah.nurfadhilah",
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
     cursor = db_connection.cursor()
     cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -85,11 +85,11 @@ def riwayat_ujian_kualifikasi(request):
 def buat_tes_kualifikasi(tahun, batch, tempat, tanggal):
     try:
         db_connection = psycopg2.connect(
-        host="localhost",
-        database="munifah.nurfadhilah",
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
         )
         cursor = db_connection.cursor()
         cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -123,11 +123,11 @@ def form_buat_ujian_kualifikasi(request):
 def list_ujian_kualifikasi_umpire(request):
     context = {}
     db_connection = psycopg2.connect(
-        host="localhost",
-        database="munifah.nurfadhilah",
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
     cursor = db_connection.cursor()
     cursor.execute("SET SEARCH_PATH TO BABADU;")
@@ -147,11 +147,11 @@ def list_ujian_kualifikasi_umpire(request):
 def riwayat_ujian_kualifikasi_umpire(request):
     context = {}
     db_connection = psycopg2.connect(
-        host="localhost",
-        database="munifah.nurfadhilah",
+        host="containers-us-west-13.railway.app",
+        database="railway",
         user="postgres",
-        port="5433",
-        password="99tugas"
+        port="7337",
+        password="a9nhUoVy1jPgQRnQs8qC"
     )
     cursor = db_connection.cursor()
     cursor.execute("SET SEARCH_PATH TO BABADU;")
