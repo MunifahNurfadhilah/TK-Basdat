@@ -92,4 +92,24 @@ def indexEnrolledEventAtlet(request):
     return render(request, 'event_cards_partai.html', response)
 
 
+def deletePeserta(request):
+    cursor = connection.cursor()
+    cursor.execute('set search_path to babadu')
+
+
+    no_peserta = request.COOKIES.get('no_peserta')
+    nama_event = request.COOKIES.get('nama_event')
+    tahun = request.COOKIES.get('tahun')
+
+    cursor.execute('SET search_path TO babadu')
+
+    cursor.execute(f"""
+        DELETE FROM PESERTA_MENDAFTAR_EVENT WHERE no_peserta = {no_peserta} and nama_event = {nama_event} and tahun = {tahun}
+        """)
+
+    return indexEnrolledEventAtlet(request)
+
+
+
+
 
