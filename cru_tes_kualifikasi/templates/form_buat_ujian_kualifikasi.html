@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List Ujian Kualifikasi</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+
+  {% include 'navbarUmpire.html' %}
+
+<div class="d-flex my-5 mx-auto justify-content-center align-items-center">
+    <div class="col-md-4 p-5 shadow-sm border rounded-5 border-primary">
+        <h1 class="text-center mb-4 text-primary">Form Buat Ujian Kualifikasi</h1>
+
+        <form id="form-tes-kualifikasi" method="POST" action="{% url 'cru_tes_kualifikasi:form_buat_ujian_kualifikasi' %}">
+        {%csrf_token%}
+            <div class="mb-3">
+                <label for="inputNoBatch" class="form-label">Tahun</label>
+                <input type="text" class="form-control border border-primary" id="tahun" name="tahun" required>
+            </div>
+            <div class="mb-3">
+                <label for="inputNoBatch" class="form-label">Batch</label>
+                <input type="text" class="form-control border border-primary" id="batch" name="batch" required>
+            </div>
+            <div class="mb-3">
+                <label for="inputTempat" class="form-label">Tempat Pelaksanaan</label>
+                <input type="text" class="form-control border border-primary" id="tempat" name="tempat" required>
+            </div>
+            <div class="mb-3">
+                <label for="inputTanggal" class="form-label">Tanggal Pelaksanaan</label>
+                <input type="date" class="form-control border border-primary" id="tanggal" name="tanggal" required>
+            </div>
+
+            <div class="d-grid mt-5">
+                <button type="submit" name="submitFormUjian"><a href="{% url 'cru_tes_kualifikasi:list_ujian_kualifikasi_umpire' %}">Buat</a></button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!-- Bootstrap JS (jQuery and Popper.js required) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
