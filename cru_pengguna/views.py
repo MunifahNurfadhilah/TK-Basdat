@@ -28,8 +28,14 @@ def indexRegistAtlet(request):
         gender = request.POST.get('gender')
 
         cursor.execute(f"""
-        INSERT INTO ATLET VALUES ({id}, {name}, {country}, {dob}, {play}, {height}, {gender});
+        INSERT INTO ATLET (id, tgl_lahir, negara_asal, play_right, height, jenis_kelamin) VALUES ({id}, {dob}, {country}, {play}, {height}, {gender});
         """)
+
+        cursor.execute(f"""
+        INSERT INTO ATLET_NON_KUALIFIKASI({id});
+        """)
+
+
 
     return render(request, 'regist_atlet.html')
 
@@ -53,8 +59,22 @@ def indexRegistPelatih(request):
         
 
         cursor.execute(f"""
-        INSERT INTO UMPIRE VALUES ({id}, {name}, {country}, {category},{dob});
+        INSERT INTO PELATIH VALUES ({id}, {dob});
         """)
+
+        for cat in category:
+            cursor.execute(f"""
+            SELECT id FROM SPESIALISASI WHERE spesialisasi= {cat}
+            """)
+            record = cursor.fetchall()[0]
+            spesialisasi_id = record[0]
+
+            cursor.execute(f"""
+            INSERT INTO PELATIH_SPESIALISASI VALUES ({id}, {spesialisasi_id});
+            """)
+
+
+    
     return render(request, 'regist_pelatih.html')
 
 def indexRegistUmpire(request): 
@@ -73,7 +93,7 @@ def indexRegistUmpire(request):
         country = request.POST.get('country')
 
         cursor.execute(f"""
-        INSERT INTO UMPIRE VALUES ({id}, {name}, {country});
+        INSERT INTO UMPIRE VALUES ({id}, {country});
         """)
 
     return render(request, 'regist_umpire.html')

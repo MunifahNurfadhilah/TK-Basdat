@@ -16,6 +16,7 @@ def indexWelcome(request):
     request.session['nonauth'] = True
     return render(request, 'welcome.html')
 
+
 def parse(cursor):
     columns = [col[0] for col in cursor.description]
     return [dict(zip(columns, row)) for row in cursor.fetchall()]
@@ -196,5 +197,3 @@ def logout(request):
     request.session['is_umpire'] = False
     request.session['nonauth'] = True
     return redirect('example_app:welcome')
-
-
