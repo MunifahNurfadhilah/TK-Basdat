@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List Ujian Kualifikasi</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+
+  {% include 'navbarUmpire.html' %}
+
+  <div class="my-5 d-flex justify-content-center align-items-center">
+    <div class="container-xl p-5 shadow-sm border rounded-5 border-primary grad">
+        <h1 class="text-center mb-4 text-primary">Riwayat Ujian Kualifikasi</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nama Atlet</th>
+                    <th scope="col">Tahun</th>
+                    <th scope="col">Batch</th>
+                    <th scope="col">Tempat Pelaksanaan</th>
+                    <th scope="col">Tanggal Pelaksanaan</th>
+                    <th scope="col">Hasil</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider align-middle">
+                {% for r_ujian_kualifikasi_umpire in data_riwayat_ujian_kualifikasi_umpire %}
+                <tr>
+                  <td>{{ r_ujian_kualifikasi_umpire.nama }}</td>
+                  <td>{{ r_ujian_kualifikasi_umpire.tahun }}</td>
+                  <td>{{ r_ujian_kualifikasi_umpire.batch }}</td>
+                  <td>{{ r_ujian_kualifikasi_umpire.tempat }}</td>
+                  <td>{{ r_ujian_kualifikasi_umpire.tanggal }}</td>
+                  <td>
+                    {% if r_ujian_kualifikasi_umpire.hasil_lulus == True %}
+                    Lulus
+                    {% else %}
+                    Tidak Lulus
+                    {% endif %}
+                  </td>
+                </tr>
+               {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Bootstrap JS (jQuery and Popper.js required) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

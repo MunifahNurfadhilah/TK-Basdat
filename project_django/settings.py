@@ -148,3 +148,21 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import psycopg2
+from django.shortcuts import render
+
+def data_kualifikasi(request):
+    context = {}
+    db_connection = psycopg2.connect(
+        host="localhost",
+        database="munifah.nurfadhilah",
+        user="postgres",
+        port="5433",
+        password="99tugas"
+    )
+    cursor = db_connection.cursor()
+    
+    cursor.execute("set search_path to babadu")
+    db_connection.close()
+    return render(request, 'data_kualifikasi.html', context=context)

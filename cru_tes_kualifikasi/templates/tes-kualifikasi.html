@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tes Kualifikasi</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+  {% include 'navbarAtlet.html' %}
+
+  <div class="d-flex my-5 justify-content-center align-items-center">
+        <div class="col-md-6 mx-5 p-5 shadow-sm border rounded-5 border-primary">
+            <h1 class="text-center mb-4 text-primary">Pertanyaan Kualifikasi</h1>
+
+            <form>
+                <div class="mb-3">
+                    <p class="form-label">Latihan yang pertama dilakukan untuk menerapkan pola pukulan adalah</p>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question1" value="option1" >
+                        <label class="form-check-label">
+                            Permainan net yang tipis-tipis
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question1" value="option2">
+                        <label class="form-check-label">
+                            Pukulan silang dan lob
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question1" value="option3">
+                        <label class="form-check-label">
+                            Pukulan yang dapat mematikan lawan
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <p class="form-label">Jumlah set dalam permainan bulu tangkis adalah</p>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question2" value="option1">
+                        <label class="form-check-label">
+                            1 dan 3 set
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question2" value="option2" >
+                        <label class="form-check-label">
+                            2 dan 3 set
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question2" value="option3">
+                        <label class="form-check-label">
+                            3 dan 4 set
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <p class="form-label">Organisasi bulu tangkis Indonesia adalah</p>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question3" value="option1">
+                        <label class="form-check-label">
+                            PASI
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question3" value="option2">
+                        <label class="form-check-label">
+                            perbasi
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question3" value="option3">
+                        <label class="form-check-label">
+                            PBSI
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <p class="form-label">Kejuaran dunia bulu tangkis khusus putra adalah</p>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question4" value="option1" >
+                        <label class="form-check-label">
+                            Jarum Super championship
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question4" value="option2">
+                        <label class="form-check-label">
+                            Sudirman Cup
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question4" value="option3">
+                        <label class="form-check-label">
+                            Thomas Cup
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <p class="form-label">Seorang pemain dinyatakan menang dalam satu set permainan bulu tangkis apa bila telah mencapai angka</p>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question5" value="option1">
+                        <label class="form-check-label">
+                            21
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question5" value="option2">
+                        <label class="form-check-label">
+                            11
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question5" value="option3">
+                        <label class="form-check-label">
+                            25
+                        </label>
+                    </div>
+                </div>
+
+
+
+                <div class="d-grid mt-5">
+                    <a href="#">Submit</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+ <!-- Bootstrap JS (jQuery and Popper.js required) -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
