@@ -9,9 +9,17 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 
-def indexEnrolledEventAtlet(request):
+def indexEnrolledPartaiKompetisi(request):
     cursor.execute('set search_path to babadu')
     email = request.COOKIES.get('email')
+    nama = request.COOKIES.get('nama')
+
+    cursor.execute(f"""
+        SELECT id from MEMBER WHERE nama = {nama} and email = {email}; 
+        """)
+
+    record = cursor.fetchall()[0]
+    id = record[0]
 
     cursor.execute(
         f"""
@@ -19,7 +27,7 @@ def indexEnrolledEventAtlet(request):
     FROM PARTAI_KOMPETISI pk
     JOIN PARTAI_PESERTA_KOMPETISI ppk ON pk.nama_event = ppk.nama_event AND pk.tahun_event = ppk.tahun_event AND pk.jenis_partai = ppk.jenis_partai
     JOIN EVENT e ON pk.nama_event = e.nama_event AND pk.tahun_event = e.tahun
-    WHERE ppk.nomor_peserta = {email};"""
+    WHERE ppk.nomor_peserta = {id}"""
     )
 
     record = cursor.fetchall()[0]
@@ -36,7 +44,7 @@ def indexEnrolledEventAtlet(request):
         'tahun_event': tahun_event,
         'nama_stadium': nama_stadium,
         'jenis_partai': jenis_partai,
-        'kategori_superseries' : kategori_superseries ,
+        'kategori_superseries' : kategori_superseries,
         'tgl_mulai' : tgl_mulai,
         'tgl_selesai' : tgl_selesai
 
@@ -45,7 +53,8 @@ def indexEnrolledEventAtlet(request):
     return render(request, 'enrolled_event_atlet.html', context)
 
 
-def indexEnrolledPartaiKompetisi(request):
+def indexEnrolledEventAtlet(request):
+    cursor.execute('set search_path to babadu')
 
     return render(request, 'enrolled_partai_kompetisi.html')
 

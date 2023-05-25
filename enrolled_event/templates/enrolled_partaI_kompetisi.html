@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enrolled Events</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+  {% include 'navbarAtlet.html' %}
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Enrolled Events</h1>
+    <table class="table table-bordered">
+      <thead class="bg-primary text-white">
+        <tr>
+          <th>Nama Event</th>
+          <th>Stadium</th>
+          <th>Prize</th>
+          <th>Category Superseries</th>
+          <th>Start Date</th>
+          <th>Finish Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for event in events %}
+        <tr>
+          <td>{{ event.nama_event }}</td>
+          <td>{{ event.nama_stadium }}</td>
+          <td>{{ event.prize }}</td>
+          <td>{{ event.kategori_superseries }}</td>
+          <td>{{ event.tgl_mulai }}</td>
+          <td>{{ event.tgl_selesai }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
