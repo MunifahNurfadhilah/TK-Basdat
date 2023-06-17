@@ -8,6 +8,6 @@ app_name = 'enrolled_event'
 urlpatterns = [
     path('enrolled_event_atlet/', indexEnrolledEventAtlet, name='index'),
     path('enrolled_partai_kompetisi/', indexEnrolledPartaiKompetisi, name='index'),
-    path(f'''delete_peserta/{id}''', deletePeserta, name = 'index')
+    path('delete_peserta/<int:id>', deletePeserta, name = 'index')
     
 ]
