@@ -10,13 +10,14 @@
 # Create your views here.
 
 from django.shortcuts import render
-# from project_django.helper.function import *
+from cru_tes_kualifikasi.function import *
 from django.shortcuts import render, redirect
 from django.db import connection, InternalError
 from cru_tes_kualifikasi.query import *
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 import locale
+import datetime
 import uuid
 from utils.query import *
 locale.setlocale(locale.LC_ALL, '')
@@ -28,7 +29,57 @@ def parse(cursor):
     return [dict(zip(columns, row)) for row in cursor.fetchall()]
 
 # atlet
-def tes_kualifikasi(request):
+def ujian_tes_kualifikasi(request, tahun, batch, tempat, tanggal, hasil_lulus):
+    try:
+        cursor = connection.cursor()
+        cursor.execute("SET SEARCH_PATH TO BABADU;")
+        query = sql_insert_riwayat_ujian_kualifikasi(request.session['id'], tahun, batch, tempat, tanggal, hasil_lulus)
+        cursor.execute(query)
+    except InternalError as e:
+        return {
+            'success': False,
+            'msg': str(e.args)
+        }
+    else:
+        return {
+            'success': True,
+        }
+    
+@csrf_exempt
+def tes_kualifikasi(request, tahun, batch, tempat, tanggal):
+    tanggal = convert_to_date(tanggal)
+    jawaban_benar = 0
+
+    if request.method == 'POST':
+        if 'submitUjianKualifikasi' in request.POST:
+            # mengambil jawaban dari form
+            question1 = request.POST.get('question1')
+            question2 = request.POST.get('question2')
+            question3 = request.POST.get('question3')
+            question4 = request.POST.get('question4')
+            question5 = request.POST.get('question5')
+
+            if question1 == 'option2':
+                jawaban_benar += 1
+            if question2 == 'option2':
+                jawaban_benar += 1
+            if question3 == 'option3':
+                jawaban_benar += 1
+            if question4 == 'option3':
+                jawaban_benar += 1
+            if question5 == 'option1':
+                jawaban_benar += 1
+
+            hasil_lulus = False
+            if jawaban_benar >= 4:
+                hasil_lulus = True
+
+            data = ujian_tes_kualifikasi(request, tahun, batch, tempat, tanggal, hasil_lulus)
+            if data['success']:
+                return redirect('cru_tes_kualifikasi:riwayat_ujian_kualifikasi')
+            else:
+                messages.info(request, 'Anda tidak dapat mengikuti ujian kualifikasi ini.')
+                return redirect('cru_tes_kualifikasi:pesan_error_atlet')
     return render(request, "tes-kualifikasi.html")
 
 def list_ujian_kualifikasi(request):
@@ -80,6 +131,19 @@ def riwayat_ujian_kualifikasi(request):
     context['data_riwayat_ujian_kualifikasi'] = riwayat_ujian_kualifikasi
 
     return render(request, "riwayat-ujian-kualifikasi.html", context)
+
+def ikut_ujian_kualifikasi(request, tahun, batch, tempat, tanggal):
+    tanggal = convert_to_date(tanggal)
+    hasil_lulus = False
+    
+    if 'submitIkutUjian':
+        data = ujian_tes_kualifikasi(request, tahun, batch, tempat, tanggal, hasil_lulus)
+        if data['success']:
+            return redirect('cru_tes_kualifikasi:riwayat_ujian_kualifikasi')
+        else:
+            messages.info(request, 'Anda tidak dapat mengikuti ujian kualifikasi ini.')
+            return redirect('cru_tes_kualifikasi:pesan_error_atlet')
+
 
 # umpire
 def buat_tes_kualifikasi(tahun, batch, tempat, tanggal):

@@ -8,7 +8,7 @@ app_name = 'cru_tes_kualifikasi'
 urlpatterns = [
     # path('data_kualifikasi/', indexDataKualifikasi, name='index'),
     # path('pertanyaan_kualifikasi/', indexPertanyaanKualifikasi, name='index'),
-    path('tes-kualifikasi/', tes_kualifikasi, name='tes_kualifikasi' ),
+    path('tes-kualifikasi/<int:tahun>/<int:batch>/<str:tempat>/<slug:tanggal>/', tes_kualifikasi, name='tes_kualifikasi' ),
     path('list-ujian-kualifikasi/', list_ujian_kualifikasi, name='list_ujian_kualifikasi' ),
     path('riwayat-ujian-kualifikasi/', riwayat_ujian_kualifikasi, name='riwayat_ujian_kualifikasi' ),
 
